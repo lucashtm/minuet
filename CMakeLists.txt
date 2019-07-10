@@ -39,6 +39,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
     QuickControls2
     Svg
+    Multimedia
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
