@@ -1,4 +1,6 @@
 set(minuet_SRCS
+    audioanaliser.cpp
+    AudioFile.cpp
     main.cpp
     core.cpp
     uicontroller.cpp
@@ -30,10 +32,12 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-intervals.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-chords.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-rhythms.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-singing.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-scales.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-intervals.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-chords.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-rhythms.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-singing.svg
     )
 
     ecm_add_app_icon(minuet_SRCS ICONS ${minuet_ICONS_PNG})
@@ -49,7 +53,9 @@ target_link_libraries(minuet
     Qt5::Quick
     Qt5::QuickControls2
     Qt5::Svg
+    Qt5::Multimedia
     Minuet::Interfaces
+    -lfftw3
 )
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Android")
