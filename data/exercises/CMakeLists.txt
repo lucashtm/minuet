@@ -9,6 +9,7 @@ set(minuet_EXERCISES
     scales-pentatonic-major-and-its-modes-exercises.json
     scales-simmetric-exercises.json
     scales-bebop-exercises.json
+    solfege-quarter-notes.json
     rhythm-easy.json
     rhythm-medium.json
 )

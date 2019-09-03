@@ -26,6 +26,7 @@
         <file>qml/images/minuet-background.png</file>
         <file>qml/images/minuet-drawer.png</file>
         <file alias="menu.png">qml/images/menu.png</file>
+        <file alias="play.png">qml/images/play.png</file>
         <file alias="keyboard_arrow_left.png">qml/images/keyboard_arrow_left.png</file>
         <file alias="more_vert.png">qml/images/more_vert.png</file>
         <file alias="minuet.png">icons/64-apps-minuet.png</file>
@@ -33,6 +34,7 @@
         <file alias="minuet-intervals.svg">icons/22-actions-minuet-intervals.svg</file>
         <file alias="minuet-rhythms.svg">icons/22-actions-minuet-rhythms.svg</file>
         <file alias="minuet-scales.svg">icons/22-actions-minuet-scales.svg</file>
+        <file alias="minuet-singing.svg">icons/22-actions-minuet-singing.svg</file>
 
         <file alias="exercise-images/current-rhythm.png">../../data/exercise-images/current-rhythm.png</file>
         <file alias="exercise-images/eighth-dot-sixteenth.png">../../data/exercise-images/eighth-dot-sixteenth.png</file>

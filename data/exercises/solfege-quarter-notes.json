@@ -1,0 +1,32 @@
+{
+  "exercises": [
+    {
+      "name": "Singing",
+      "root": "41..67",
+      "playMode": "singing",
+      "userMessage": "Hit the play button to hear the melody, hit sing and wait the four beats to sing it",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-singing.svg",
+      "children": [
+        {
+          "name": "Easy",
+          "and-tags": [
+            "sing"
+          ]
+        },
+        {
+          "name": "Medium",
+          "and-tags": [
+            "sing"
+          ]
+        },
+        {
+          "name": "Hard",
+          "and-tags": [
+            "sing"
+          ]
+        }
+      ]
+    }
+  ]
+} 

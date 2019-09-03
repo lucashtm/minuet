@@ -21,9 +21,11 @@
 ****************************************************************************/
 
 import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.0
+import QtQuick.Dialogs 1.0
+// import org.kde.minuet.audioanaliser
 
 Item {
     id: exerciseView
@@ -166,11 +168,23 @@ Item {
             internal.currentExercise++
     }
 
+    function isExerciseUndefined(){
+        return currentExercise == undefined
+    }
+
+    function isSingingExercise(){
+        return currentExercise["playMode"] == "singing"
+    }
+
+    function isRhythmExercise(){
+        return currentExercise["playMode"] == "rhythm"
+    }
+
 
     ColumnLayout {
         anchors.fill: parent
         spacing: Screen.width >= 1024 ? 20:10
-
+        visible: !isExerciseUndefined() && !isSingingExercise()
         Text {
             id: userMessage
 
@@ -418,7 +432,7 @@ Item {
             PianoView {
                 id: pianoView
                 width: parent.width/2 - 10
-                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+                visible: !isExerciseUndefined() && !(isRhythmExercise() || isSingingExercise())
                 ScrollIndicator.horizontal: ScrollIndicator { active: true }
             }
             SheetMusicView {
@@ -426,7 +440,44 @@ Item {
 
                 height: pianoView.height
                 anchors { bottom: parent.bottom; bottomMargin: 15 }
-                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+                visible: !isExerciseUndefined() && !(isRhythmExercise() || isSingingExercise())
+            }
+        }
+    }
+
+    ColumnLayout {
+        anchors.fill: parent
+        spacing: Screen.width >= 1024 ? 20:10
+        visible: !isExerciseUndefined() && isSingingExercise()
+        Row {
+            Button {
+                text: "Choose a file"
+                onClicked: fileDialog.open()
+            }
+
+            Text {
+                id: fileName
+            }
+
+            FileDialog {
+                id: fileDialog
+                title: "Choose a file"
+                folder: shortcuts.home
+                onAccepted: {
+                    fileName.text = _note.analyzeFile(this.fileUrl)
+                }
+            }
+            // AudioAnaliser {
+            //     id: audioAnaliser
+            // }
+            // Button {
+                // text: "Get Note"
+                // onClicked: {
+                //     noteText.text = audioAnaliser.getNoteName(fileName.text)
+                // }
+            // }
+            Text {
+                id: noteText
             }
         }
     }
