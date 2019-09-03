@@ -464,18 +464,18 @@ Item {
                 title: "Choose a file"
                 folder: shortcuts.home
                 onAccepted: {
-                    fileName.text = this.fileUrl
+                    fileName.text = _note.analyzeFile(this.fileUrl)
                 }
             }
             // AudioAnaliser {
             //     id: audioAnaliser
             // }
-            Button {
-                text: "Get Note"
-                onClicked: {
-                    noteText.text = audioAnaliser.getNoteName(fileName.text)
-                }
-            }
+            // Button {
+                // text: "Get Note"
+                // onClicked: {
+                //     noteText.text = audioAnaliser.getNoteName(fileName.text)
+                // }
+            // }
             Text {
                 id: noteText
             }

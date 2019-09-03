@@ -23,7 +23,7 @@
 #include "uicontroller.h"
 
 #include "core.h"
-
+#include "audioanalyser.h"
 #include <QStandardPaths>
 
 #include <QQmlContext>
@@ -51,6 +51,9 @@ bool UiController::initialize(Core *core)
     QQmlApplicationEngine *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
+    AudioAnalyser analyser;
+    rootContext->setContextProperty(QStringLiteral("_note"), &analyser);
+
 #ifndef Q_OS_ANDROID
     rootContext->setContextObject(new KLocalizedContext(engine));
 #else

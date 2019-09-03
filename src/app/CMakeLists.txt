@@ -1,5 +1,5 @@
 set(minuet_SRCS
-    audioanaliser.cpp
+    audioanalyser.cpp
     AudioFile.cpp
     main.cpp
     core.cpp

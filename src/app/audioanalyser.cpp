@@ -7,7 +7,7 @@
 #include <QTimer>
 #include <QBuffer>
 #include <qendian.h>
-#include "audioanaliser.h"
+#include "audioanalyser.h"
 #include "AudioFile.h"
 #include <iostream>
 
@@ -28,10 +28,20 @@ namespace Minuet{
     fftw_complex* generateSignal(double* frequencies, int f_size, double sampleRate, int length);
     double getMainFrequency(fftw_complex* signal);
     fftw_complex* doubleArrayToFFTWComplex(std::vector<double> arr, int length);
-    QString noteFromFreq(double freq);
+    QString noteFromFrequency(double freq);
     fftw_complex* bytesToComplex(QByteArray data, int length);
 
-    QString AudioAnaliser::getNoteName(QString filename)
+
+    AudioAnalyser::AudioAnalyser(QObject *parent) :
+    QObject(parent)
+    {
+    }
+
+    QString AudioAnalyser::analyzeFile(const QString& in){
+        return "AAAAAAAA";
+    }
+
+    QString AudioAnalyser::getNoteName(QString filename)
     {
         audioFile.load (filename.toUtf8().constData());
         int nsamples = audioFile.getNumSamplesPerChannel();
@@ -93,24 +103,24 @@ namespace Minuet{
         return in;
     }
 
-    int keyFromFreq(double freq){
+    int keyFromFrequency(double freq){
         double a = 440.00;
         if(freq < 27.5 || freq > 4186.009)
             return -1;
         return round(12*log2(freq/a)+49);
     }
 
-    double freqFromKey(int key){
+    double frequencyFromKey(int key){
         double a = 440.00;
         if(key < 1 || key > 88)
             return -1;
         return pow(2.0, (key-49.0)/12.0)*a;
     }
 
-    QString noteFromFreq(double freq){
-        int key = keyFromFreq(freq);
+    QString noteFromFrequency(double freq){
+        int key = keyFromFrequency(freq);
         if(key == -1) return "Given frequency is outside frequency range [27.5Hz, 4186.009Hz]";
-        return notes[((keyFromFreq(freq)-1)+9)%12];
+        return notes[((keyFromFrequency(freq)-1)+9)%12];
     }
 
     fftw_complex* bytesToComplex(QByteArray data, int length){
